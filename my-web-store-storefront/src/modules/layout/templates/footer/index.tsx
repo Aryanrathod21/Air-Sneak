@@ -10,13 +10,13 @@ export default async function Footer() {
   const { product_categories } = await getCategoriesList(0, 6)
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="border-t border-ui-border-base w-full bg-[#1F1F21]">
       <div className="content-container flex flex-col w-full">
         <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
           <div>
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-slate-300 text-white uppercase"
             >
               Medusa Store
             </LocalizedClientLink>
@@ -79,12 +79,12 @@ export default async function Footer() {
             )}
             {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-white ">
                   Collections
                 </span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    "grid grid-cols-1 gap-2 text-slate-400  txt-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
                     }
@@ -93,7 +93,7 @@ export default async function Footer() {
                   {collections?.slice(0, 6).map((c) => (
                     <li key={c.id}>
                       <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
+                        className="hover:text-white"
                         href={`/collections/${c.handle}`}
                       >
                         {c.title}
@@ -104,14 +104,14 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+              <span className="txt-small-plus text-white">Medusa</span>
+              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle text-slate-400 txt-small">
                 <li>
                   <a
                     href="https://github.com/medusajs"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-white"
                   >
                     GitHub
                   </a>
@@ -121,7 +121,7 @@ export default async function Footer() {
                     href="https://docs.medusajs.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-white"
                   >
                     Documentation
                   </a>
@@ -131,7 +131,7 @@ export default async function Footer() {
                     href="https://github.com/medusajs/nextjs-starter-medusa"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-white"
                   >
                     Source code
                   </a>
