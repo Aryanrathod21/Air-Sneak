@@ -1,25 +1,32 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 // import { Github } from "@medusajs/icons"
 // import { Button, Heading } from "@medusajs/ui"
 // import Banner from "../banner"
-import banner from "../../../../assets/mainpic.png"
+// import bannerVideo from "../../../../assets/bannervid.mp4"; // Ensure the path is correct
+
+import bannerVideo from "../../../../assets/bannervid.mp4"; // Ensure the path is correct
 
 const Hero = () => {
   return (
     <div className="h-[75vh] w-full border-b border-ui-border-base relative">
-      <Image 
-        src={banner} // Replace with your image URL
-        alt="Hero Image"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-      />
-      {/* You can add any content here if needed */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={bannerVideo}
+        autoPlay
+        loop
+        muted
+      >
+        Your browser does not support the video tag.
+      </video>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
+
+
+
+
 
 
 {/* <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">

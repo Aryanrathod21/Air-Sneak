@@ -1,5 +1,5 @@
-const { withStoreConfig } = require("./store-config")
-const store = require("./store.config.json")
+const { withStoreConfig } = require('./store-config');
+const store = require('./store.config.json'); // Import the store configuration
 
 /**
  * @type {import('next').NextConfig}
@@ -27,8 +27,29 @@ const nextConfig = withStoreConfig({
       },
     ],
   },
-})
+});
 
-console.log("next.config.js", JSON.stringify(module.exports, null, 2))
+console.log("next.config.js", JSON.stringify(nextConfig, null, 2));
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  webpack: (config, { isServer }) => {
+    // Add support for loading .mp4 files
+    config.module.rules.push({
+      test: /\.(mp4)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/files',
+            outputPath: `${isServer ? '../' : ''}static/files/`,
+            name: '[name].[ext]',
+            esModule: false,
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
+};
