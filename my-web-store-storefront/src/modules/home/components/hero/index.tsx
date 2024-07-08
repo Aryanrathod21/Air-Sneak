@@ -8,13 +8,14 @@ import bannerVideo from "../../../../assets/bannervid.mp4"; // Ensure the path i
 
 const Hero = () => {
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative">
+    <div className="h-[75vh] w-full border-b border-ui-border-base relative overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={bannerVideo}
         autoPlay
         loop
         muted
+        playsInline
       >
         Your browser does not support the video tag.
       </video>
