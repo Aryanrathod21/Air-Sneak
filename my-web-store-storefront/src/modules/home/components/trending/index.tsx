@@ -1,31 +1,47 @@
-import React from 'react';
+"use client"
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
 type Props = {
     className: string;
 };
 
 const Trending = (props: Props) => {
-    // Example image URL (replace with your actual image URL)
-    const imageUrl = 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5fc6a13d-7526-4cd8-9327-26cff85c9b28/mercurial-vapor-15-elite-low-top-football-boot-9Mbrnv.png'; 
+    // Array of image URLs (replace with your actual image URLs)
+    const imageUrls = [
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5fc6a13d-7526-4cd8-9327-26cff85c9b28/mercurial-vapor-15-elite-low-top-football-boot-9Mbrnv.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/26c4acd1-385f-48fe-b4c0-8e573671e530/dunk-low-retro-shoe-66RGqF.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ebdc8f36-bb8d-44f0-ade5-9b676a54d197/jumpman-mvp-shoes-JV1HCs.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/60d2e87c-9eaa-46a0-b9aa-0f730291262b/air-force-1-07-shoes-VWCc04.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a34bf01a-65c2-4d50-94b7-8baff33bbe38/air-zoom-infinity-tour-nrg-golf-shoes-KjbRB7.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/b8866e5f-5749-4047-ad10-f5f5262a28a1/mercurial-vapor-15-elite-fg-low-top-football-boot-nt9B0G.png',
+        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f03bbe0f-9863-417e-a7db-085f7f844b82/phantom-luna-2-elite-fg-high-top-football-boot-kvD5sX.png'
+    ];
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentImageIndex(prevIndex => (prevIndex + 1) % imageUrls.length);
+        }, 2000);
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, [imageUrls.length]);
 
     return (
-        <section className='grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 h-fit w-full text-black py-16 gap-4'>
-            <div className='flex justify-center flex-col gap-2'>
-                <p className='font-bold text-2xl'>Hello I'm Aryan Rathod</p>
-                <p className='font-semibold text-lg'>Full-stack Developer</p>
-                <p className='font-normal max-w-lg'>
-                    I'm currently pursuing a degree in Computer Engineering at LDRP-ITR College in Gandhinagar and hail from Mahuva, Bhavnagar. I specialize in front-end development with expertise in Next.js, Tailwind CSS, and React.js. While I've primarily worked with Firebase for backend services, I'm eager to expand my knowledge in backend technologies like MongoDB and SQL. Passionate about continuous learning, I aim to become a full-stack developer.
-                </p>
-                {/* Example button */}
-                {/* <button onClick={openResume} className='mt-4 px-6 py-2 bg-green-500 text-white rounded-full hover:bg-red-600 flex items-center w-fit'>
-                    Resume <FaLongArrowAltRight className='ml-2' />
-                </button> */}
-            </div>
-            <div className='relative flex justify-center items-center'>
-                {/* Example for displaying an image from URL */}
-                <div className='h-full bg-gray-200 rounded-lg overflow-hidden'>
-                    <img src={imageUrl} alt='Sample Image' className='object-cover h-full w-full' />
+        <section className='xl:border-4 lg:border-4 md:border-2 sm:border-2 border-2 border-green-600 grid grid-cols-5 h-fit w-full text-black rounded-lg '>
+            <div className='col-span-3 flex justify-center items-center bg-[url("https://www.transparenttextures.com/patterns/asfalt-dark.png")] bg-cover bg-center relative'>
+                <div className='text-center'>
+                    <p className='text-black xl:text-9xl lg:text-7xl md:text-6xl sm:text-4xl text-2xl  font-extrabold'>
+                        Hot<br />Trending
+                    </p>
                 </div>
+            </div>
+            <div className='col-span-2 relative flex justify-center items-center'>
+                {/* Example for displaying an image from URL */}
+                <Link href="/store"><div className='h-full bg-gray-200 rounded-lg overflow-hidden w-full'>
+                    <img src={imageUrls[currentImageIndex]} alt='Sample Image' className='object-cover h-full w-full' />
+                </div></Link>
             </div>
         </section>
     );
