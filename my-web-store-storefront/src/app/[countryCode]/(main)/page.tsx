@@ -8,6 +8,7 @@ import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 import Banner from "@modules/home/components/banner"
 import Trending from "@modules/home/components/trending"
+import FeatureGrid from "@modules/home/components/featuregrid"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -78,6 +79,9 @@ export default async function Home({
         </ul>
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
+        </ul>
+        <ul className="content-container py-12 small:py-24">
+          <FeatureGrid/>
         </ul>
         
       </div>

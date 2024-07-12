@@ -29,19 +29,23 @@ const Trending = (props: Props) => {
     }, [imageUrls.length]);
 
     return (
-        <section className='xl:border-4 lg:border-4 md:border-2 sm:border-2 border-2 border-green-600 grid grid-cols-5 h-fit w-full text-black rounded-lg '>
+        <section className='xl:border-4 lg:border-4 md:border-2 sm:border-2 border-2 border-green-600 grid grid-cols-5 h-fit w-full text-black rounded-lg'>
             <div className='col-span-3 flex justify-center items-center bg-[url("https://www.transparenttextures.com/patterns/asfalt-dark.png")] bg-cover bg-center relative'>
                 <div className='text-center'>
-                    <p className='text-black xl:text-9xl lg:text-7xl md:text-6xl sm:text-4xl text-2xl  font-extrabold'>
+                    <p className='text-black xl:text-9xl lg:text-7xl md:text-6xl sm:text-4xl text-2xl font-extrabold'>
                         Hot<br />Trending
                     </p>
                 </div>
             </div>
-            <div className='col-span-2 relative flex justify-center items-center'>
-                {/* Example for displaying an image from URL */}
-                <Link href="/store"><div className='h-full bg-gray-200 rounded-lg overflow-hidden w-full'>
-                    <img src={imageUrls[currentImageIndex]} alt='Sample Image' className='object-cover h-full w-full' />
-                </div></Link>
+            <div className='col-span-2 relative flex justify-center items-center overflow-visible'>
+                <Link href="/store">
+                    <div className='h-full bg-gray-200 rounded-lg overflow-visible w-full relative'>
+                        <img src={imageUrls[currentImageIndex]} alt='Sample Image' className='object-cover h-full w-full' />
+                        <div className='absolute top-0 right-0 transform xl:translate-x-[20%] xl:-translate-y-[20%] lg:translate-x-[20%] lg:-translate-y-[20%] md:translate-x-[20%] md:-translate-y-[20%] sm:translate-x-[25%] sm:-translate-y-[25%] translate-x-[35%] -translate-y-[55%] bg-yellow-500 text-black xl:font-extrabold lg:font-extrabold md:font-extrabold sm:font-extrabold font-normal xl:text-3xl lg:text-3xl md:text-xl sm:text-lg text-sm rounded-full xl:px-6 xl:py-20 lg:px-6 lg:py-20 md:px-2 md:py-10 sm:px-4 sm:py-10 px-2 py-6'>
+                            Trending
+                        </div>
+                    </div>
+                </Link>
             </div>
         </section>
     );
