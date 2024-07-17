@@ -9,6 +9,7 @@ import { cache } from "react"
 import Banner from "@modules/home/components/banner"
 import Trending from "@modules/home/components/trending"
 import FeatureGrid from "@modules/home/components/featuregrid"
+import Uptext from "@modules/home/components/uptext"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -74,6 +75,9 @@ export default async function Home({
       {/* <Banner/> */}
       <Hero />
       <div className="">
+      <ul className="content-container py-4 small:py-8">
+        <Uptext title="TRENDING NOW" subtitle="GET TRENDING SHOES NOW!!!" ></Uptext>
+      </ul> 
       <ul className="content-container py-12 small:py-24">
           <Trending/>
         </ul>
