@@ -75,15 +75,18 @@ export default async function Home({
       {/* <Banner/> */}
       <Hero />
       <div className="">
-      <ul className="content-container py-4 small:py-8">
+      <ul className="content-container pb-4 small:pb-6 pt-8 small:pt-16">
         <Uptext title="TRENDING NOW" subtitle="GET TRENDING SHOES NOW!!!" ></Uptext>
       </ul> 
-      <ul className="content-container py-12 small:py-24">
+      <ul className="content-container pb-8 small:pb-16 pt-6 small:pt-12">
           <Trending/>
         </ul>
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
+        <ul className="content-container pb-4 small:pb-6 pt-8 small:pt-16">
+        <Uptext title="COLLECTION" subtitle="FILL UP YOUR COLLECTION NOW!!!" ></Uptext>
+      </ul> 
         <ul className="content-container py-12 small:py-24">
           <FeatureGrid/>
         </ul>
