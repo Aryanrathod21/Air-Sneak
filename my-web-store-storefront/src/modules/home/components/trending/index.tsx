@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 type Props = {
-    className: string;
+    // className: string;
 };
 
 const Trending = (props: Props) => {
