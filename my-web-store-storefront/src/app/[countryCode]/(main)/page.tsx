@@ -90,6 +90,9 @@ export default async function Home({
         <ul className="content-container py-12 small:py-24">
           <FeatureGrid/>
         </ul>
+        <ul className="content-container pb-4 small:pb-6 pt-8 small:pt-16">
+        <Uptext title="REVIEWS" subtitle="OUR SUBS HONEST REVIEWS!!!" ></Uptext>
+      </ul>
         
       </div>
     </div>
