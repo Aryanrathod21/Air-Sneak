@@ -11,6 +11,7 @@ import Trending from "@modules/home/components/trending"
 import FeatureGrid from "@modules/home/components/featuregrid"
 import Uptext from "@modules/home/components/uptext"
 import Swiper from "@modules/home/components/swiper"
+import Slider from "@modules/home/components/swiper"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -95,7 +96,7 @@ export default async function Home({
         <Uptext title="REVIEWS" subtitle="OUR SUBS HONEST REVIEWS!!!" ></Uptext>
       </ul>
       <ul className="content-container py-12 small:py-24">
-          <Swiper/>
+          <Slider/>
         </ul>
         
       </div>
