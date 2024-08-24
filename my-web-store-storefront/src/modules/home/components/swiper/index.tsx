@@ -9,6 +9,7 @@ import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
 
 import './swiper.css';
+import Testimonial from '../testimonial';
 
 export default function Slider() {
   return (
@@ -17,10 +18,10 @@ export default function Slider() {
       modules={[Scrollbar]}
       className="mySwiper"
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
+      <SwiperSlide><Testimonial/></SwiperSlide>
+      <SwiperSlide><Testimonial/></SwiperSlide>
+      <SwiperSlide><Testimonial/></SwiperSlide>
+      <SwiperSlide><Testimonial/></SwiperSlide>
     </Swiper>
   );
 }
