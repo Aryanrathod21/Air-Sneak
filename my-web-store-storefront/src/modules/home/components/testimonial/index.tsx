@@ -2,10 +2,11 @@ import React, { ReactNode } from "react";
 
 type Props = {
   imageSrc: string;
+  userName: string;
   children?: ReactNode;
 };
 
-const Testimonial = ({ imageSrc, children }: Props) => {
+const Testimonial = ({ imageSrc,userName ,children }: Props) => {
   return (
     <div className="flex justify-center items-center xl:px-12 lg:px-6 md:px-4 sm:px-0 py-12">
       <div className="relative bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full text-center">
@@ -19,7 +20,7 @@ const Testimonial = ({ imageSrc, children }: Props) => {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-xl font-semibold">John Doe</h3>
+          <h3 className="text-xl font-semibold">{userName}</h3>
           <p className="mt-4 text-gray-600">
             {children
               ? children
