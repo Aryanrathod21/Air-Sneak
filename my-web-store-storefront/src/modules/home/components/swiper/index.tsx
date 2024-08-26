@@ -1,9 +1,9 @@
 "use client"
 
-import women from "../../../../../public/woman.png"
-import women1 from "../../../../../public/woman2.png"
-import man from "../../../../../public/man.png"
-import man1 from "../../../../../public/man1.png"
+import women from "../../../../../public/robin.jpg"
+import women1 from "../../../../../public/megan.jpg"
+import man from "../../../../../public/zoro.jpg"
+import man1 from "../../../../../public/sanji.jpg"
 1
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
