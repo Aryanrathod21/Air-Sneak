@@ -4,7 +4,6 @@ import women from "../../../../../public/robin.jpg"
 import women1 from "../../../../../public/megan.jpg"
 import man from "../../../../../public/zoro.jpg"
 import man1 from "../../../../../public/sanji.jpg"
-1
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
@@ -22,7 +21,7 @@ export default function Slider() {
       className="mySwiper"
     >
       <SwiperSlide>
-        <Testimonial imageSrc={women.src} userName="Robin">
+        <Testimonial imageSrc={women.src} userName="Robin" bgColor="bg-purple-200">
           "Air Sneak shoes are a perfect blend of fashion and functionality. The
           cushioned sole and supportive fit make them ideal for both exercise
           and daily use. I appreciate the attention to detail in the design,
@@ -31,7 +30,7 @@ export default function Slider() {
         </Testimonial>
       </SwiperSlide>
       <SwiperSlide>
-        <Testimonial imageSrc={man.src} userName="Roronoa Zoro">
+        <Testimonial imageSrc={man.src} userName="Roronoa Zoro" bgColor="bg-green-200">
           "Air Sneak shoes are exceptional for both comfort and style. The
           cushioning is perfect for long runs, and the sleek design looks great
           with any outfit. I appreciate the supportive fit, which keeps my feet
@@ -40,7 +39,7 @@ export default function Slider() {
         </Testimonial>
       </SwiperSlide>
       <SwiperSlide>
-        <Testimonial imageSrc={women1.src} userName="Megan Fox">
+        <Testimonial imageSrc={women1.src} userName="Megan Fox" bgColor="bg-pink-200">
           "Air Sneak shoes are a game-changer for my daily workouts. The fit is
           perfect, providing excellent support without feeling restrictive. I
           love the modern design that goes well with both workout gear and
@@ -49,7 +48,7 @@ export default function Slider() {
         </Testimonial>
       </SwiperSlide>
       <SwiperSlide>
-        <Testimonial imageSrc={man1.src} userName="Vinsmoke Sanji">
+        <Testimonial imageSrc={man1.src} userName="Vinsmoke Sanji" bgColor="bg-yellow-200">
           "I’m really impressed with my Air Sneak shoes. They offer great
           support and are surprisingly lightweight, making them ideal for
           various activities. The modern design adds a touch of flair to my

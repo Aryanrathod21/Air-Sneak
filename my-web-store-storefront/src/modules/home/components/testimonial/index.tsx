@@ -3,13 +3,14 @@ import React, { ReactNode } from "react";
 type Props = {
   imageSrc: string;
   userName: string;
+  bgColor?: string;
   children?: ReactNode;
 };
 
-const Testimonial = ({ imageSrc,userName ,children }: Props) => {
+const Testimonial = ({ imageSrc, userName, bgColor = "bg-white", children }: Props) => {
   return (
     <div className="flex justify-center items-center xl:px-12 lg:px-6 md:px-4 sm:px-0 py-12">
-      <div className="relative bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full text-center">
+      <div className={`relative ${bgColor} shadow-lg rounded-lg p-8 max-w-2xl w-full text-center`}>
         <div className="absolute left-1/2 transform -translate-x-1/2 -top-12">
           <img
             src={imageSrc}
@@ -20,8 +21,8 @@ const Testimonial = ({ imageSrc,userName ,children }: Props) => {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-xl font-semibold">{userName}</h3>
-          <p className="mt-4 text-gray-600">
+          <h3 className="text-xl font-bold">{userName}</h3>
+          <p className="mt-4 text-gray-600 font-semibold">
             {children
               ? children
               : `"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."`}
