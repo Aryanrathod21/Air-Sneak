@@ -4,7 +4,7 @@ type Props = {};
 
 const Query = (props: Props) => {
   return (
-    <div className="flex flex-col h-screen justify-between max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
+    <div className="flex flex-col h-[90dvh] justify-between w-full max-w-md sm:max-w-full sm:w-full lg:max-w-full mx-auto p-4 bg-white shadow-lg rounded-lg">
       <div className="overflow-y-auto flex-1 p-4 bg-gray-100 rounded-lg">
         <div className="text-sm text-gray-600">Hello! How can I help you today?</div>
       </div>
