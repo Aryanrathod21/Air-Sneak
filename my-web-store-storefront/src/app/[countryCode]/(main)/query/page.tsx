@@ -7,6 +7,8 @@ const Query = (props: Props) => {
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [activeRelatedQuestion, setActiveRelatedQuestion] = useState<string | null>(null);
+  const [messages, setMessages] = useState<string[]>([]);
+  const [inputMessage, setInputMessage] = useState<string>("");
 
   const questions = [
     {
@@ -82,6 +84,13 @@ const Query = (props: Props) => {
     setActiveRelatedQuestion((prev) => (prev === question ? null : question));
   };
 
+  const handleSendMessage = () => {
+    if (inputMessage.trim() !== "") {
+      setMessages([...messages, inputMessage]);
+      setInputMessage("");
+    }
+  };
+
   return (
     <div className="flex flex-col h-[90dvh] justify-between w-full max-w-md sm:max-w-full sm:w-full lg:max-w-full mx-auto p-4 bg-white shadow-lg rounded-lg">
       <div className="overflow-y-auto flex-1 p-4 bg-gray-100 rounded-lg">
@@ -132,14 +141,26 @@ const Query = (props: Props) => {
             </div>
           </div>
         )}
+        {messages.map((msg, index) => (
+          <div key={index} className="flex justify-end mt-2">
+            <div className="bg-blue-500 text-white p-2 rounded-lg max-w-xs">
+              {msg}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="flex items-center p-2 mt-4 bg-white rounded-lg border-t">
         <input
           type="text"
+          value={inputMessage}
+          onChange={(e) => setInputMessage(e.target.value)}
           placeholder="Type a message..."
           className="flex-1 px-4 py-2 text-sm border rounded-lg focus:outline-none"
         />
-        <button className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        <button
+          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          onClick={handleSendMessage}
+        >
           Send
         </button>
       </div>
