@@ -6,9 +6,7 @@ type Props = {};
 const Query = (props: Props) => {
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [relatedQuestionsAndAnswers, setRelatedQuestionsAndAnswers] = useState<
-    { question: string; answer: string }[]
-  >([]);
+  const [activeRelatedQuestion, setActiveRelatedQuestion] = useState<string | null>(null);
 
   const questions = [
     {
@@ -77,7 +75,11 @@ const Query = (props: Props) => {
   ) => {
     setSelectedQuestion(question);
     setSelectedAnswer(answer);
-    setRelatedQuestionsAndAnswers(related);
+    setActiveRelatedQuestion(null); // Reset related question answer visibility
+  };
+
+  const handleRelatedQuestionClick = (question: string) => {
+    setActiveRelatedQuestion((prev) => (prev === question ? null : question));
   };
 
   return (
@@ -107,14 +109,25 @@ const Query = (props: Props) => {
             <h3 className="text-lg font-semibold">{selectedQuestion}</h3>
             <p className="text-gray-700">{selectedAnswer}</p>
             <div className="mt-4">
-              <h4 className="text-md font-semibold">Related Questions & Answers:</h4>
+              <h4 className="text-md font-semibold">Related Questions:</h4>
               <ul className="mt-2">
-                {relatedQuestionsAndAnswers.map((related, index) => (
-                  <li key={index} className="mt-2">
-                    <h5 className="font-semibold">{related.question}</h5>
-                    <p className="text-gray-700">{related.answer}</p>
-                  </li>
-                ))}
+                {questions
+                  .find((q) => q.question === selectedQuestion)
+                  ?.related.map((related, index) => (
+                    <li key={index} className="mt-2">
+                      <button
+                        className="text-blue-600 cursor-pointer hover:underline"
+                        onClick={() =>
+                          handleRelatedQuestionClick(related.question)
+                        }
+                      >
+                        {related.question}
+                      </button>
+                      {activeRelatedQuestion === related.question && (
+                        <p className="mt-1 text-gray-700">{related.answer}</p>
+                      )}
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
