@@ -6,7 +6,9 @@ type Props = {};
 const Query = (props: Props) => {
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [relatedQuestions, setRelatedQuestions] = useState<string[]>([]);
+  const [relatedQuestionsAndAnswers, setRelatedQuestionsAndAnswers] = useState<
+    { question: string; answer: string }[]
+  >([]);
 
   const questions = [
     {
@@ -14,9 +16,18 @@ const Query = (props: Props) => {
       answer:
         "The best running shoes vary based on your needs, but popular choices include the Nike Air Zoom Pegasus, Adidas Ultraboost, and ASICS Gel-Kayano.",
       related: [
-        "What shoes are best for long-distance running?",
-        "Which running shoes have the best cushioning?",
-        "How do I choose the right running shoes?",
+        {
+          question: "What shoes are best for long-distance running?",
+          answer: "For long-distance running, shoes with good cushioning and support, like the Hoka One One or Brooks Ghost, are recommended.",
+        },
+        {
+          question: "Which running shoes have the best cushioning?",
+          answer: "Running shoes with the best cushioning include the Adidas Ultraboost and the ASICS Gel-Nimbus.",
+        },
+        {
+          question: "How do I choose the right running shoes?",
+          answer: "To choose the right running shoes, consider your foot type, running style, and the terrain you'll be running on.",
+        },
       ],
     },
     {
@@ -24,9 +35,18 @@ const Query = (props: Props) => {
       answer:
         "To clean sneakers, remove any excess dirt with a dry brush, use a mild cleaning solution, and air dry. Avoid submerging them in water.",
       related: [
-        "Can I put sneakers in the washing machine?",
-        "What is the best way to dry sneakers?",
-        "How often should I clean my sneakers?",
+        {
+          question: "Can I put sneakers in the washing machine?",
+          answer: "It's not recommended to put sneakers in the washing machine, as it can damage the material and structure.",
+        },
+        {
+          question: "What is the best way to dry sneakers?",
+          answer: "Air drying is the best method for drying sneakers. Avoid direct heat sources like radiators.",
+        },
+        {
+          question: "How often should I clean my sneakers?",
+          answer: "Cleaning your sneakers every few weeks, depending on usage, helps maintain their appearance and longevity.",
+        },
       ],
     },
     {
@@ -34,17 +54,30 @@ const Query = (props: Props) => {
       answer:
         "It is recommended to replace running shoes every 300-500 miles, depending on wear and tear.",
       related: [
-        "How do I know when my running shoes are worn out?",
-        "What are the signs that I need new running shoes?",
-        "Can worn-out shoes cause injuries?",
+        {
+          question: "How do I know when my running shoes are worn out?",
+          answer: "Signs that running shoes are worn out include loss of cushioning, worn-out soles, and uneven wear patterns.",
+        },
+        {
+          question: "What are the signs that I need new running shoes?",
+          answer: "If you experience discomfort, pain, or notice the shoe's structure breaking down, it's time for a new pair.",
+        },
+        {
+          question: "Can worn-out shoes cause injuries?",
+          answer: "Yes, worn-out shoes can lead to injuries like shin splints or plantar fasciitis due to lack of support and cushioning.",
+        },
       ],
     },
   ];
 
-  const handleQuestionClick = (question: string, answer: string, related: string[]) => {
+  const handleQuestionClick = (
+    question: string,
+    answer: string,
+    related: { question: string; answer: string }[]
+  ) => {
     setSelectedQuestion(question);
     setSelectedAnswer(answer);
-    setRelatedQuestions(related);
+    setRelatedQuestionsAndAnswers(related);
   };
 
   return (
@@ -61,7 +94,9 @@ const Query = (props: Props) => {
               <button
                 key={index}
                 className="block text-left w-full py-2 px-4 mb-2 bg-white rounded-lg border hover:bg-gray-200 focus:outline-none"
-                onClick={() => handleQuestionClick(q.question, q.answer, q.related)}
+                onClick={() =>
+                  handleQuestionClick(q.question, q.answer, q.related)
+                }
               >
                 {q.question}
               </button>
@@ -72,24 +107,12 @@ const Query = (props: Props) => {
             <h3 className="text-lg font-semibold">{selectedQuestion}</h3>
             <p className="text-gray-700">{selectedAnswer}</p>
             <div className="mt-4">
-              <h4 className="text-md font-semibold">Related Questions:</h4>
+              <h4 className="text-md font-semibold">Related Questions & Answers:</h4>
               <ul className="mt-2">
-                {relatedQuestions.map((related, index) => (
-                  <li
-                    key={index}
-                    className="mt-1 text-blue-600 cursor-pointer hover:underline"
-                    onClick={() => {
-                      const relatedQuestion = questions.find((q) => q.question === related);
-                      if (relatedQuestion) {
-                        handleQuestionClick(
-                          relatedQuestion.question,
-                          relatedQuestion.answer,
-                          relatedQuestion.related
-                        );
-                      }
-                    }}
-                  >
-                    {related}
+                {relatedQuestionsAndAnswers.map((related, index) => (
+                  <li key={index} className="mt-2">
+                    <h5 className="font-semibold">{related.question}</h5>
+                    <p className="text-gray-700">{related.answer}</p>
                   </li>
                 ))}
               </ul>
