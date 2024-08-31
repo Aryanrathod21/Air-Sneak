@@ -125,7 +125,7 @@ const Query = (props: Props) => {
                   ?.related.map((related, index) => (
                     <li key={index} className="mt-2">
                       <button
-                        className="text-blue-600 cursor-pointer hover:underline"
+                        className="block text-left w-full py-2 px-4 mb-2 bg-white rounded-lg border hover:bg-gray-200 focus:outline-none cursor-pointer"
                         onClick={() =>
                           handleRelatedQuestionClick(related.question)
                         }
