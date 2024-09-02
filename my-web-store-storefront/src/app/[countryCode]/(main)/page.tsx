@@ -16,7 +16,7 @@ import Slider from "@modules/home/components/swiper"
 export const metadata: Metadata = {
   title: "Air Sneak",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "A performant frontend ecommerce with Next.js 14 and Medusa.",
 }
 
 const getCollectionsWithProducts = cache(
